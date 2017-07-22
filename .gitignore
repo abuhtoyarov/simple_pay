@@ -1,0 +1,22 @@
+.bundle/
+log/*.log
+pkg/
+spec/dummy/log
+spec/dummy/db/*.sqlite3
+spec/dummy/tmp/
+spec/dummy/.sass-cache
+*.gem
+*.rbc
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+rdoc
+tmp
+.DS_Store
+
+# YARD artifacts
+.yardoc
+_yardoc
+doc/
+Gemfile.lock
