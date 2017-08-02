@@ -17,7 +17,7 @@ module SimplePay
                when :result
                  ['result', sp_params, SimplePay.secret_key_result]
                when :success
-                 ['success', sp_params, SimplePay.secret_key]
+                 ['success', sp_params, SimplePay.secret_key_result]
                end
       result.join ';'
     end
