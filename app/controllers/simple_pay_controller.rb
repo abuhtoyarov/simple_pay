@@ -31,7 +31,9 @@ class SimplePayController < ActionController::Base
     if request.get?
       @notification = SimplePay::Notification.new request.query_parameters
     elsif request.post?
-      @notification = SimplePay::Notification.new request.request_parameters
+      # WTF SimplePay sends a POST request with query parameters if success.
+      req_prm = request.request_parameters.presence || request.query_parameters
+      @notification = SimplePay::Notification.new req_prm
     end
   end
 end
