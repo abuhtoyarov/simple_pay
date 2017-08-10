@@ -25,12 +25,13 @@ module SimplePay
     end
 
     def to_json
-      {
-        sp_status: @params['sp_status'],
-        sp_description: @params['sp_description'],
-        sp_salt: @params['sp_salt'],
-        sp_sig: generate_signature_for(:result)
-      }.reject{ |k, v| v.blank? }.to_json
+      { response:
+        {
+          sp_status: @params['sp_status'],
+          sp_description: @params['sp_description'],
+          sp_salt: @params['sp_salt'],
+          sp_sig: generate_signature_for(:result)
+        }.reject { |k, v| v.blank? } }.to_json
     end
   end
 end
