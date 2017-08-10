@@ -29,33 +29,33 @@ describe SimplePay::Notification do
 
   it 'should return correct success response' do
     notification = SimplePay::Notification.new
-    params = {
+    params = {'response' => {
       'sp_status' => 'ok',
       'sp_salt' => 'salt1234',
       'sp_sig' => '5695d225fcfb14e1f408beaffde1e250'
-    }.to_json
+    }}.to_json
 
     expect(notification.response({sp_status: 'ok'})).to eq(params)
   end
 
   it 'should return correct error response' do
     notification = SimplePay::Notification.new
-    params = {
+    params = {'response' => {
       'sp_status' => 'error',
       'sp_salt' => 'salt1234',
       'sp_sig' => 'dff463b8b22e5b784d26189a4133ab74'
-    }.to_json
+    }}.to_json
 
     expect(notification.response({sp_status: 'error'})).to eq(params)
   end
 
   it 'should return correct rejected response' do
     notification = SimplePay::Notification.new({sp_can_reject: '1'})
-    params = {
+    params = {'response' => {
       'sp_status' => 'rejected',
       'sp_salt' => 'salt1234',
       'sp_sig' => 'ebcaeafe110e727fae4ae67c61d01f17'
-    }.to_json
+    }}.to_json
 
     expect(notification.response({sp_status: 'rejected'})).to eq(params)
   end
