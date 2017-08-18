@@ -40,6 +40,7 @@ module SimplePay
         sp_salt: generate_salt
       }
       result.merge!(sp_payment_system: 'TEST') if test_mode?
+      result
     end
   end
 end
